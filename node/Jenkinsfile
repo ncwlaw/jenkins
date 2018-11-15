@@ -4,11 +4,18 @@ pipeline {
         stage('build') {
             steps {
                 sh 'npm --version'
-            
             }
-        
+            steps {
+                sh 'npm list'
+            }
+            steps {
+                sh 'echo $PWD'
+            }
         }
-    
+        post {
+            always {
+                echo 'Post step'
+            }
+        }
     }
-
 }
