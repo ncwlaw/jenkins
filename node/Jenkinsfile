@@ -1,9 +1,17 @@
 pipeline {
     agent { docker { image 'node:6.3'  }  }
+    environment {
+        NAME = 'nathan'
+    }
     stages {
         stage('build') {
             steps {
                 sh 'npm --version'
+            }
+        }
+        stage('Check environment') {
+            steps {
+                sh 'echo $NAME'
             }
         }
         stage('Test node') {
